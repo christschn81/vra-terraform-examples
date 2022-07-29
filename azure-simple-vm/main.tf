@@ -1,20 +1,3 @@
-
-terraform {
-
-#  required_version = "1.2.6"
-
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "~>2.0"
-    }
-  }
-}
-
-provider "azurerm" {
-  features {}
-}
-
 resource "random_pet" "rg-name" {
   prefix    = var.resource_group_name_prefix
 }
@@ -135,7 +118,8 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 
   computer_name                   = "myvm"
   admin_username                  = "azureuser"
-  disable_password_authentication = true
+  admin_password                  = var.admin_password
+  disable_password_authentication = false
 
   admin_ssh_key {
     username   = "azureuser"
@@ -145,25 +129,4 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
   boot_diagnostics {
     storage_account_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
   }
-}
-output "resource_group_name" {
-  value = azurerm_resource_group.rg.name
-}
-
-output "public_ip_address" {
-  value = azurerm_linux_virtual_machine.myterraformvm.public_ip_address
-}
-
-output "tls_private_key" {
-  value     = tls_private_key.example_ssh.private_key_pem
-  sensitive = true
-}
-variable "resource_group_name_prefix" {
-  default       = "vra"
-  description   = "Prefix of the resource group name that's combined with a random ID so name is unique in your Azure subscription."
-}
-
-variable "resource_group_location" {
-  default       = "westeurope"
-  description   = "Location of the resource group."
 }
