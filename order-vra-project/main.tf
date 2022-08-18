@@ -1,7 +1,7 @@
 provider "vra" {
   url           = var.url
   refresh_token = var.refresh_token
-  insecure      = var.insecure
+  insecure      = false
 }
 
 data "vra_zone" "this" {
@@ -39,8 +39,8 @@ data "vra_project" "this" {
 
 # Share Blueprints with Project in Service Broker
 
-resource "vra_catalog_source_entitlement" "this" {
-  catalog_source_id     = var.catalog_source_id
-  project_id            = vra_project.this.id
-}
+#resource "vra_catalog_source_entitlement" "this" {
+#  catalog_source_id     = var.catalog_source_id
+#  project_id            = vra_project.this.id
+#}
 
