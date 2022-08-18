@@ -14,7 +14,7 @@ data "azurerm_kubernetes_service_versions" "current" {
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "${var.prefix}-k8s"
+  name                = "systempool"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "${var.prefix}-k8s"
