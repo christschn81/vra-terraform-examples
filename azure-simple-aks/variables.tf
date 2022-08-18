@@ -44,3 +44,15 @@ variable "user_pool_min_count" {
   description = "Minimum number of nodes which should exist in this Node Pool. If specified this must be between 1 and 1000"
   type        = number
 }
+
+variable "user_pool_availability_zones" {
+  description = "List of Availability Zones across which the Node Pool should be spread"
+  type        = list(string)
+  default     = ["1", "2", "3"]
+}
+
+variable "system_pool_availability_zones" {
+  description = "List of Availability Zones across which the Node Pool should be spread"
+  type        = list(string)
+  default     = ["1", "2", "3"]
+}
