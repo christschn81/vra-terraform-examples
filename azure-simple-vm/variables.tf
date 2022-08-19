@@ -1,6 +1,6 @@
-variable "admin_password" {
-  default       = "VMware1!"
-  description   = "Administrator Password for this VM"
+variable "admin_username" {
+  default       = "ubuntu"
+  description   = "Administrator Account for this VM"
 }
 
 variable "resource_group_name_prefix" {
@@ -11,4 +11,18 @@ variable "resource_group_name_prefix" {
 variable "resource_group_location" {
   default       = "westeurope"
   description   = "Location of the resource group."
+}
+
+variable "ubuntu_version" {
+  default       = "18.04-LTS"
+  description   = "Ubuntu Release to deploy."
+}
+
+variable "admin_ssh_key" {
+  description   = "Administrator SSH Public Key for this VM"
+}
+
+variable "vm_size" {
+  default       = "Standard_DS1_v2"
+  description   = "VM SKU to choose."
 }
