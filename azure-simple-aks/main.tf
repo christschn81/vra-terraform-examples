@@ -14,13 +14,14 @@ data "azurerm_kubernetes_service_versions" "current" {
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "systempool"
+  name                = random_pet.rg-name.id
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "${var.prefix}-k8s"
+  kubernetes_version  = var.kubernetes_version
 
   default_node_pool {
-    name       = "default"
+    name       = "systempool"
     node_count = var.system_pool_node_count
     vm_size    = var.system_pool_vm_size
   }
