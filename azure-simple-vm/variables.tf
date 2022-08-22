@@ -13,11 +13,6 @@ variable "resource_group_location" {
   description   = "Location of the resource group."
 }
 
-variable "ubuntu_version" {
-  default       = "18.04-LTS"
-  description   = "Ubuntu Release to deploy."
-}
-
 variable "admin_ssh_key" {
   description   = "Administrator SSH Public Key for this VM"
 }
